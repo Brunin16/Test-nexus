@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://mcr.microsoft.com/
-        username: ${{ secrets.AzureAppService_ContainerUsername_e1ed805e94b4480bb0c3594acb7414ca }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_6bbe8db8d88d46b087a0341c36bf7525 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_58b9fc2ffb8342f5ac6930fa769bdcfa }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_95e5108da4c9461db511911319ce5c55 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_e1ed805e94b4480bb0c3594acb7414ca }}/appsvc/staticsite:${{ github.sha }}
+        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_58b9fc2ffb8342f5ac6930fa769bdcfa }}/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'nexusTeste'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_73a7a854dc514c60910ec508cf1a98d3 }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_e1ed805e94b4480bb0c3594acb7414ca }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_527a27165053425a9a461e0170abf219 }}
+        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_58b9fc2ffb8342f5ac6930fa769bdcfa }}/appsvc/staticsite:${{ github.sha }}'
